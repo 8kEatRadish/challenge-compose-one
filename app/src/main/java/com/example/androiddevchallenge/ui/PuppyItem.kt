@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.data.Repository
 import com.example.androiddevchallenge.model.PuppyBean
-import com.example.androiddevchallenge.ui.theme.typography
 
 @Composable
 fun PuppyItem(puppyBean: PuppyBean) {
