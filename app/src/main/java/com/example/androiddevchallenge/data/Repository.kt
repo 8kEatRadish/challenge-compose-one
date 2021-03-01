@@ -8,12 +8,12 @@ object Repository {
     val dogs = mutableStateOf(
         arrayListOf(
             PuppyBean(
-                "小黑", "7个月", R.drawable.xiaohei_img1,
-                R.drawable.xiaohei_img2,
+                "小黄", "7个月", R.drawable.xiaohuang_img1,
+                R.drawable.xiaohuang_img2,
                 "科学喂养，不散养，定期驱虫、洗澡，不离不弃 /:heart\n" +
-                        "小小黑是朋友在风景区里看到的狗仔，目测是蝴蝶串、7个月大，耳朵又大又立、" +
+                        "小小黄是朋友在风景区里看到的狗仔，7个月大，耳朵又大又立、" +
                         "小爪爪短小可爱。性格亲人，从不乱吠，还会自动躺倒求摸摸\uD83E\uDD70 希望有好心人带它回家，让它过上幸福狗生",
-                "蝴蝶串", "弟弟"
+                "小狗", "妹妹"
             ),
             PuppyBean(
                 "博美弟弟", "10个月", R.drawable.bomei_img1,

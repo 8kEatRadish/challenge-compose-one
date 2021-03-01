@@ -18,13 +18,20 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.Repository
 import com.example.androiddevchallenge.model.PuppyBean
+import com.example.androiddevchallenge.ui.PuppyItem
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -42,9 +49,10 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun MyApp() {
     Surface() {
-        LazyColumn() {
+        LazyColumn(Modifier.padding()) {
             itemsIndexed(Repository.dogs.value) { index, item ->
-
+                PuppyItem(puppyBean = item)
+                Spacer(modifier = Modifier.height(3.dp))
             }
         }
     }
@@ -52,7 +60,7 @@ fun MyApp() {
 
 @Composable
 fun DogCard(dogBean: PuppyBean) {
-    
+
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
