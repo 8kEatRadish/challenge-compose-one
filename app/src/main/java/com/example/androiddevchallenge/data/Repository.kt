@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.data
 
 import androidx.compose.runtime.MutableState
@@ -7,7 +22,7 @@ import com.example.androiddevchallenge.model.PuppyBean
 
 object Repository {
 
-    val currentPuppy : MutableState<PuppyBean?> = mutableStateOf(null)
+    val currentPuppy: MutableState<PuppyBean?> = mutableStateOf(null)
 
     val dogs = mutableStateOf(
         arrayListOf(
@@ -15,8 +30,8 @@ object Repository {
                 "小黄", "7个月", R.drawable.xiaohuang_img1,
                 R.drawable.xiaohuang_img2,
                 "科学喂养，不散养，定期驱虫、洗澡，不离不弃 /:heart\n" +
-                        "小小黄是朋友在风景区里看到的狗仔，7个月大，耳朵又大又立、" +
-                        "小爪爪短小可爱。性格亲人，从不乱吠，还会自动躺倒求摸摸\uD83E\uDD70 希望有好心人带它回家，让它过上幸福狗生",
+                    "小小黄是朋友在风景区里看到的狗仔，7个月大，耳朵又大又立、" +
+                    "小爪爪短小可爱。性格亲人，从不乱吠，还会自动躺倒求摸摸\uD83E\uDD70 希望有好心人带它回家，让它过上幸福狗生",
                 "小狗", "妹妹"
             ),
             PuppyBean(
