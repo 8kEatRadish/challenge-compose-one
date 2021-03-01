@@ -2,8 +2,8 @@ package com.example.androiddevchallenge.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,84 +18,105 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.data.Repository
 import com.example.androiddevchallenge.model.PuppyBean
-import com.example.androiddevchallenge.ui.theme.typography
 
 @Composable
-fun PuppyItem(puppyBean: PuppyBean) {
-    Box(
+fun PuppyDetailsPage(puppyBean: PuppyBean) {
+    LazyColumn(
         Modifier
-            .height(200.dp)
-            .fillMaxWidth()
-            .background(Color.Black)
-            .clickable {
-                Repository.currentPuppy.value = puppyBean
-            },
-        contentAlignment = Alignment.CenterStart
+            .fillMaxSize(1f)
+            .background(Color.Gray)
     ) {
-        Image(
-            painter = painterResource(id = puppyBean.image),
-            contentDescription = null,
-            Modifier.fillMaxSize(1f),
-            alpha = 0.3f,
-            contentScale = ContentScale.Crop
-        )
-
-        Row(
-            Modifier
-                .padding(16.dp)
-                .fillMaxWidth(1f)
-        ) {
-            Image(
-                painter = painterResource(id = puppyBean.image2), contentDescription = null,
+        item {
+            Box(
                 Modifier
-                    .width(150.dp)
-                    .height(150.dp),
-                alpha = 1f, contentScale = ContentScale.Crop,
-            )
-            Spacer(modifier = Modifier.width(60.dp))
-            Column() {
+                    .fillMaxWidth(1f)
+                    .fillMaxHeight(0.5f),
+                contentAlignment = Alignment.BottomStart
+            ) {
+
+                Image(
+                    painter = painterResource(id = puppyBean.image),
+                    contentDescription = null,
+                    Modifier.fillMaxSize(1f),
+                    alpha = 0.5f,
+                    contentScale = ContentScale.Crop
+                )
+
+                Image(
+                    painter = painterResource(id = puppyBean.image2), contentDescription = null,
+                    Modifier
+                        .width(200.dp)
+                        .height(200.dp)
+                        .padding(8.dp),
+                    alpha = 1f, contentScale = ContentScale.Crop,
+                )
+            }
+            Spacer(modifier = Modifier.height(32.dp))
+        }
+
+        item {
+            Column(Modifier.padding(16.dp)) {
                 Text(
-                    text = puppyBean.name,
+                    text = "姓名：" + puppyBean.name,
                     style = TextStyle(
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Default,
                         fontSize = 30.sp
                     )
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "年龄：" + puppyBean.age,
+                    style = TextStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default,
+                        fontSize = 30.sp
+                    )
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "性别：" + puppyBean.gender,
+                    style = TextStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default,
+                        fontSize = 30.sp
+                    )
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "品种：" + puppyBean.variety,
+                    style = TextStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default,
+                        fontSize = 30.sp
+                    )
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "宠物简介：",
+                    style = TextStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default,
+                        fontSize = 30.sp
+                    )
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = puppyBean.introduction,
+                    style = TextStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default,
+                        fontSize = 15.sp
+                    )
+                )
 
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = puppyBean.variety,
-                    style = TextStyle(
-                        color = Color.Gray,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily.Default,
-                        fontSize = 20.sp
-                    )
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = puppyBean.age,
-                    style = TextStyle(
-                        color = Color.Gray,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily.Default,
-                        fontSize = 20.sp
-                    )
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = puppyBean.gender,
-                    style = TextStyle(
-                        color = Color.Gray,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily.Default,
-                        fontSize = 20.sp
-                    )
-                )
             }
         }
     }
@@ -103,8 +124,8 @@ fun PuppyItem(puppyBean: PuppyBean) {
 
 @Preview
 @Composable
-fun showPuppyItem() {
-    PuppyItem(
+fun showPuppyDetailsPage() {
+    PuppyDetailsPage(
         puppyBean = PuppyBean(
             "不错", "一岁半", R.drawable.bucuo_img1,
             R.drawable.bucuo_img2,

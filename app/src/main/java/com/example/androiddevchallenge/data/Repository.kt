@@ -1,10 +1,14 @@
 package com.example.androiddevchallenge.data
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.model.PuppyBean
 
 object Repository {
+
+    val currentPuppy : MutableState<PuppyBean?> = mutableStateOf(null)
+
     val dogs = mutableStateOf(
         arrayListOf(
             PuppyBean(

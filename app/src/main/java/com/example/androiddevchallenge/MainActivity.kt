@@ -18,6 +18,8 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -31,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.Repository
 import com.example.androiddevchallenge.model.PuppyBean
+import com.example.androiddevchallenge.ui.PuppyDetailsPage
 import com.example.androiddevchallenge.ui.PuppyItem
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
@@ -43,17 +46,43 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        if (Repository.currentPuppy.value != null) {
+            Repository.currentPuppy.value = null
+        } else {
+            super.onBackPressed()
+        }
+    }
 }
 
 // Start building your app here!
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MyApp() {
     Surface() {
-        LazyColumn(Modifier.padding()) {
-            itemsIndexed(Repository.dogs.value) { index, item ->
-                PuppyItem(puppyBean = item)
-                Spacer(modifier = Modifier.height(3.dp))
+
+        PuppyDetailsPage(puppyBean = Repository.dogs.value[5])
+        Box {
+            LazyColumn(Modifier.padding()) {
+                itemsIndexed(Repository.dogs.value) { index, item ->
+                    PuppyItem(puppyBean = item)
+                    Spacer(modifier = Modifier.height(3.dp))
+                }
             }
+
+
+            AnimatedVisibility(
+                visible = Repository.currentPuppy.value != null,
+                enter = slideInVertically() + fadeIn(),
+                exit = slideOutVertically() + fadeOut()
+            ) {
+
+                Repository.currentPuppy.value?.apply {
+                    PuppyDetailsPage(puppyBean = this)
+                }
+            }
+
         }
     }
 }
